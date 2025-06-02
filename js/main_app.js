@@ -1,16 +1,11 @@
-// js/main_app.js
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Protección de rutas: si no está logueado, redirige al login
     if (localStorage.getItem('isLoggedIn') !== 'true') {
-        // Permite el acceso a index.html incluso si no está logueado (para evitar bucle infinito)
         if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('index.html')) {
             window.location.href = 'index.html';
-            return; // Detiene la ejecución del script si redirige
+            return;
         }
     }
 
-    // Funcionalidad de Logout
     const logoutButton = document.getElementById('logout-button');
     if (logoutButton) {
         logoutButton.addEventListener('click', function(event) {
@@ -20,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Activar link del menú actual
     const currentPage = window.location.pathname.split("/").pop();
     const navLinks = document.querySelectorAll('nav ul li a');
     navLinks.forEach(link => {
@@ -29,15 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-
-    // Inicialización específica de la página
-    // Hacemos las funciones de inicialización de mapa globales para el callback de Google Maps
     if (document.getElementById('map-clients-container')) {
         window.initClientMapGlobal = initClientMap;
         loadGoogleMapsScript('initClientMapGlobal');
     }
 
-    if (document.getElementById('clients-table-body')) { // Asegúrate que el tbody tenga este ID
+    if (document.getElementById('clients-table-body')) {
         populateClientsTable();
     }
 
@@ -46,8 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         loadGoogleMapsScript('initHeatMapGlobal', 'visualization');
     }
 });
-
-// --- Funciones de Inicialización ---
 
 function initClientMap() {
     console.log("initClientMap llamada");
@@ -63,7 +52,7 @@ function initClientMap() {
     }
 
     const mapOptions = {
-        center: { lat: 11.5, lng: -85.0 }, // Un centro general para Centroamérica
+        center: { lat: 11.5, lng: -85.0 },
         zoom: 6,
         mapTypeControl: true,
         streetViewControl: false,
@@ -94,11 +83,11 @@ function populateClientsTable() {
         console.error("Elemento 'clients-table-body' no encontrado.");
         return;
     }
-    tableBody.innerHTML = ''; // Limpiar tabla
+    tableBody.innerHTML = '';
 
     CLIENT_LOCATIONS.forEach(client => {
         const row = tableBody.insertRow();
-        row.className = 'hover:bg-gray-100'; // Estilo para fila al pasar el mouse
+        row.className = 'hover:bg-gray-100';
 
         const cellNombre = row.insertCell();
         cellNombre.textContent = client.nombre;
@@ -129,7 +118,7 @@ function initHeatMap() {
 
     const map = new google.maps.Map(mapElement, {
         zoom: 6,
-        center: { lat: 11.5, lng: -85.0 }, // Un centro general
+        center: { lat: 11.5, lng: -85.0 },
         mapTypeControl: true,
         streetViewControl: false,
         fullscreenControl: true
@@ -144,13 +133,11 @@ function initHeatMap() {
         map: map
     });
 
-    // Opcional: Configurar el heatmap
-    heatmap.set('radius', 25); // Radio de influencia de cada punto
-    heatmap.set('opacity', 0.7); // Opacidad de la capa
+    heatmap.set('radius', 25);
+    heatmap.set('opacity', 0.7);
     // heatmap.set('gradient', [ ... ]); // Para colores personalizados
 }
 
-// Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -158,7 +145,6 @@ function initHeatMap() {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
                 mobileMenu.classList.add('hidden');
