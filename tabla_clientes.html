@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Clientes - Prueba Logixsoft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <nav class="bg-white shadow-lg border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+
+                <div class="flex-shrink-0">
+                    <h2 class="text-xl font-bold text-primary">Logixsoft</h2>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="mapa_clientes.html" 
+                           class="text-gray-700 hover:bg-gray-100 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Mapa de Clientes
+                        </a>
+                        <a href="tabla_clientes.html" 
+                           class="bg-primary text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Tabla de Clientes
+                        </a>
+                        <a href="mapa_calor.html" 
+                           class="text-gray-700 hover:bg-gray-100 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Mapa de Calor
+                        </a>
+                        <button id="logout-button" 
+                                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Salir
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" 
+                            class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-colors duration-200">
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50 border-t border-gray-200">
+                <a href="mapa_clientes.html" 
+                   class="text-gray-700 hover:bg-gray-100 hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+                    Mapa de Clientes
+                </a>
+                <a href="tabla_clientes.html" 
+                   class="bg-primary text-white block px-3 py-2 rounded-md text-base font-medium">
+                    Tabla de Clientes
+                </a>
+                <a href="mapa_calor.html" 
+                   class="text-gray-700 hover:bg-gray-100 hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+                    Mapa de Calor
+                </a>
+                <button id="logout-button-mobile" 
+                        class="bg-red-500 hover:bg-red-600 text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+                    Salir
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div class="mb-6 sm:mb-8">
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 text-center sm:text-left">
+                Tabla de Clientes y Ubicaciones
+            </h1>
+            <p class="mt-2 text-sm sm:text-base text-gray-600 text-center sm:text-left">
+                
+            </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gradient-to-r from-primary to-blue-600">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-white uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"></path>
+                                    </svg>
+                                    Nombre
+                                </div>
+                            </th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-white uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Latitud
+                                </div>
+                            </th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-white uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Longitud
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="clients-table-body" class="bg-white divide-y divide-gray-200 ">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+            <div class="flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-sm text-gray-600 mb-2 sm:mb-0">
+                    &copy; 2024 Prueba Técnica Logixsoft
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/main_app.js"></script>
+    <script src="js/tailwind_config.js"></script>
+
+</body>
+</html>
